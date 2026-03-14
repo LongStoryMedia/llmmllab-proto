@@ -5,6 +5,7 @@ package runner.v1;
 import "google/api/annotations.proto";
 import "common/timestamp.proto";
 import "common/version.proto";
+import "model_profile.proto";
 
 option go_package = "github.com/llmmllab/proto/runner/v1;runnerv1";
 option java_package = "com.llmmllab.runner.v1";
@@ -14,24 +15,6 @@ message PipelineHandle {
     string pipeline_id = 1;
     string model_name = 2;
     bool is_cached = 3;
-}
-
-// ModelProfile defines model configuration
-message ModelProfile {
-    string model_name = 1;
-    string provider = 2;
-    string task_type = 3;
-    map<string, string> model_config = 4;
-    GPUConfig gpu_config = 5;
-    ParameterOptimizationConfig optimization_config = 6;
-}
-
-// GPUConfig defines GPU-specific settings
-message GPUConfig {
-    int32 gpu_layers = 1;
-    string main_gpu = 2;
-    double gpu_memory_fraction = 3;
-    bool flash_attn = 4;
 }
 
 // ParameterOptimizationConfig defines optimization settings
@@ -129,7 +112,7 @@ message CacheStats {
 
 // CreatePipelineRequest requests pipeline creation
 message CreatePipelineRequest {
-    ModelProfile profile = 1;
+    models.ModelProfile profile = 1;
     string priority = 2;
     string grammar_type = 3;
     map<string, string> metadata = 4;
@@ -239,7 +222,7 @@ message ListModelsResponse {
 
 message LoadModelRequest {
     string model_name = 1;
-    ModelProfile profile = 2;
+    models.ModelProfile profile = 2;
 }
 
 message UnloadModelRequest {

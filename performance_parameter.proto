@@ -3,7 +3,7 @@
 
 syntax = "proto3";
 
-package server;
+package models;
 
 option go_package = "github.com/llmmllab/proto";
 
@@ -34,10 +34,10 @@ message PerformanceParameter {
   // Operator to adjust the parameter value during optimization
   enum OperatorEnum {
     OPERATORENUM_UNSPECIFIED = 0;
-     = 1;
-     = 2;
-     = 3;
-     = 4;
+    OPERATORENUM_PLUS = 1;
+    OPERATORENUM_MINUS = 2;
+    OPERATORENUM_MULTIPLY = 3;
+    OPERATORENUM_DIVIDE = 4;
   }
   
 
