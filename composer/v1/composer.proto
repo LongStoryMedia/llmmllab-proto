@@ -13,7 +13,7 @@ option java_package = "com.llmmllab.composer.v1";
 // WorkflowHandle represents a created workflow
 message WorkflowHandle {
     string workflow_id = 1;
-    google.protobuf.Timestamp created_at = 2;
+    common.Timestamp created_at = 2;
 }
 
 // WorkflowState represents the state of a workflow
@@ -22,7 +22,7 @@ message WorkflowState {
     int32 conversation_id = 2;
     string workflow_type = 3;
     map<string, string> variables = 4;
-    google.protobuf.Timestamp created_at = 5;
+    common.Timestamp created_at = 5;
     repeated server.v1.ConversationMessage messages = 6;
 }
 
@@ -31,7 +31,7 @@ message ComposeWorkflowRequest {
     string user_id = 1;
     string workflow_type = 2;
     string model_name = 3;
-    google.protobuf.Timestamp timestamp = 4;
+    common.Timestamp timestamp = 4;
     server.v1.UserConfig user_config = 5;
     repeated server.v1.DynamicTool tools = 6;
 }
@@ -47,7 +47,7 @@ message ExecuteWorkflowRequest {
 // WorkflowEvent represents a workflow execution event
 message WorkflowEvent {
     string event_type = 1;
-    google.protobuf.Timestamp timestamp = 2;
+    common.Timestamp timestamp = 2;
     oneof payload {
         WorkflowStepStart step_start = 3;
         WorkflowStepComplete step_complete = 4;
@@ -93,7 +93,7 @@ message ChatDelta {
 // ChatResponseDelta represents a streaming delta response with metadata
 message ChatResponseDelta {
     ChatDelta delta = 1;
-    google.protobuf.Timestamp created_at = 2;
+    common.Timestamp created_at = 2;
     repeated float context = 3;
     string finish_reason = 4;
     double total_duration = 5;
@@ -110,7 +110,7 @@ message ChatResponseDelta {
 // ChatResponseComplete represents a workflow completion response
 message ChatResponseComplete {
     WorkflowComplete complete = 1;
-    google.protobuf.Timestamp created_at = 2;
+    common.Timestamp created_at = 2;
     repeated float context = 3;
     string finish_reason = 4;
     double total_duration = 5;
@@ -169,8 +169,8 @@ message GetWorkflowStatusResponse {
     string workflow_id = 1;
     string status = 2;
     WorkflowState state = 3;
-    google.protobuf.Timestamp created_at = 4;
-    google.protobuf.Timestamp completed_at = 5;
+    common.Timestamp created_at = 4;
+    common.Timestamp completed_at = 5;
 }
 
 // ComposerService provides workflow composition and execution

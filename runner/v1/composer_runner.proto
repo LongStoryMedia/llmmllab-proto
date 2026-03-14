@@ -7,6 +7,7 @@ option java_package = "com.llmmllab.runner.v1";
 
 import "google/api/field_behavior.proto";
 import "google/protobuf/duration.proto";
+import "common/version.proto";
 
 // PipelineHandle represents a created pipeline
 message PipelineHandle {
@@ -175,4 +176,7 @@ service RunnerService {
 
     // EvictPipeline evicts a pipeline from cache
     rpc EvictPipeline(EvictPipelineRequest) returns (StatusResponse);
+
+    // HealthCheck checks service health
+    rpc HealthCheck(common.v1.HealthCheckRequest) returns (common.v1.HealthCheckResponse);
 }

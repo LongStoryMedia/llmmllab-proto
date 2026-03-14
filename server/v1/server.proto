@@ -95,7 +95,7 @@ message ConversationMessage {
     repeated ToolCall tool_calls = 3;
     map<string, string> analyses = 4;
     repeated Document documents = 5;
-    google.protobuf.Timestamp created_at = 6;
+    common.Timestamp created_at = 6;
 }
 
 // ToolCall represents a tool call
@@ -152,7 +152,7 @@ message CreateConversationRequest {
 message CreateConversationResponse {
     int32 conversation_id = 1;
     string title = 2;
-    google.protobuf.Timestamp created_at = 3;
+    common.Timestamp created_at = 3;
 }
 
 // GetConversationRequest gets a conversation by ID
@@ -165,7 +165,7 @@ message GetConversationResponse {
     int32 conversation_id = 1;
     string user_id = 2;
     string title = 3;
-    google.protobuf.Timestamp created_at = 4;
+    common.Timestamp created_at = 4;
     repeated ConversationMessage messages = 5;
 }
 
@@ -188,7 +188,7 @@ message MemoryFragment {
     string content = 2;
     string embedding_id = 3;
     map<string, string> metadata = 4;
-    google.protobuf.Timestamp created_at = 5;
+    common.Timestamp created_at = 5;
 }
 
 // SearchMemoryRequest searches memory for relevant fragments
@@ -210,7 +210,7 @@ message Summary {
     int32 conversation_id = 2;
     string content = 3;
     string summary_type = 4;
-    google.protobuf.Timestamp created_at = 5;
+    common.Timestamp created_at = 5;
 }
 
 // CreateSummaryRequest creates a summary for a conversation

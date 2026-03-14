@@ -30,15 +30,15 @@
 
 syntax = "proto3";
 
-package google.protobuf;
+package common;
 
 option cc_enable_arenas = true;
-option go_package = "google.golang.org/protobuf/types/known/timestamppb";
-option java_package = "com.google.protobuf";
+option go_package = "github.com/llmmllab/proto/common;common";
+option java_package = "com.llmmllab.common";
 option java_outer_classname = "TimestampProto";
 option java_multiple_files = true;
-option objc_class_prefix = "GPB";
-option csharp_namespace = "Google.Protobuf.WellKnownTypes";
+option objc_class_prefix = "CMT";
+option csharp_namespace = "LLMMLLab.Common";
 
 // A Timestamp represents a point in time independent of any time zone or local
 // calendar, encoded as a count of seconds and fractions of seconds at

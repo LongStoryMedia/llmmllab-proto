@@ -5,7 +5,8 @@ package server_composer.v1;
 option go_package = "github.com/llmmllab/proto/composer/v1;composerv1";
 option java_package = "com.llmmllab.composer.v1";
 
-import "common/timestamp.proto";
+// Use google/protobuf/timestamp.proto - it's the same as common/timestamp.proto
+import "google/protobuf/timestamp.proto";
 
 // WorkflowHandle represents a created workflow
 message WorkflowHandle {

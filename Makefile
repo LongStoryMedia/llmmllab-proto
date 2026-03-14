@@ -21,8 +21,10 @@ generate-typescript: generate-typescript-server generate-typescript-composer gen
 generate-server:
 	@echo "Generating server gRPC code..."
 	@mkdir -p ../server/gen/python
+	PYTHONPATH="/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages" \
 	python -m grpc_tools.protoc \
 		-I. \
+		-I/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages \
 		--python_out=../server/gen/python \
 		--grpc_python_out=../server/gen/python \
 		server/v1/server.proto \
@@ -35,8 +37,10 @@ generate-server:
 generate-python-server:
 	@echo "Generating Python server gRPC code..."
 	@mkdir -p ../server/gen/python
+	PYTHONPATH="/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages" \
 	python -m grpc_tools.protoc \
 		-I. \
+		-I/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages \
 		--python_out=../server/gen/python \
 		--grpc_python_out=../server/gen/python \
 		server/v1/server.proto \
@@ -61,8 +65,10 @@ generate-typescript-server:
 generate-composer:
 	@echo "Generating composer gRPC code..."
 	@mkdir -p ../composer/gen/python
+	PYTHONPATH="/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages" \
 	python -m grpc_tools.protoc \
 		-I. \
+		-I/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages \
 		--python_out=../composer/gen/python \
 		--grpc_python_out=../composer/gen/python \
 		composer/v1/composer.proto \
@@ -75,8 +81,10 @@ generate-composer:
 generate-python-composer:
 	@echo "Generating Python composer gRPC code..."
 	@mkdir -p ../composer/gen/python
+	PYTHONPATH="/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages" \
 	python -m grpc_tools.protoc \
 		-I. \
+		-I/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages \
 		--python_out=../composer/gen/python \
 		--grpc_python_out=../composer/gen/python \
 		composer/v1/composer.proto \
@@ -101,8 +109,11 @@ generate-typescript-composer:
 generate-runner:
 	@echo "Generating runner gRPC code..."
 	@mkdir -p ../runner/gen/python
+	@mkdir -p ./test_loc
+	PYTHONPATH="/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages" \
 	python -m grpc_tools.protoc \
 		-I. \
+		-I/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages \
 		--python_out=../runner/gen/python \
 		--grpc_python_out=../runner/gen/python \
 		runner/v1/runner.proto \
@@ -115,8 +126,10 @@ generate-runner:
 generate-python-runner:
 	@echo "Generating Python runner gRPC code..."
 	@mkdir -p ../runner/gen/python
+	PYTHONPATH="/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages" \
 	python -m grpc_tools.protoc \
 		-I. \
+		-I/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages \
 		--python_out=../runner/gen/python \
 		--grpc_python_out=../runner/gen/python \
 		runner/v1/runner.proto \

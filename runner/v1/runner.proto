@@ -256,7 +256,7 @@ message ModelInfo {
     string task_type = 3;
     bool is_loaded = 4;
     int64 memory_bytes = 5;
-    google.protobuf.Timestamp loaded_at = 6;
+    common.Timestamp loaded_at = 6;
 }
 
 message GetModelListRequest {}
