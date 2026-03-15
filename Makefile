@@ -45,6 +45,7 @@ generate-composer:
 		parameter_optimization_config.proto \
 		crash_prevention.proto \
 		performance_parameter.proto \
+		parameter_tuning_strategy.proto \
 		message.proto \
 		message_content.proto \
 		message_role.proto \
@@ -92,6 +93,7 @@ generate-runner:
 		parameter_optimization_config.proto \
 		crash_prevention.proto \
 		performance_parameter.proto \
+		parameter_tuning_strategy.proto \
 		message.proto \
 		message_content.proto \
 		message_role.proto \
