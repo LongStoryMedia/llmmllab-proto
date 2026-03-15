@@ -43,6 +43,8 @@ generate-composer:
 		circuit_breaker_config.proto \
 		gpu_config.proto \
 		parameter_optimization_config.proto \
+		crash_prevention.proto \
+		performance_parameter.proto \
 		message.proto \
 		message_content.proto \
 		message_role.proto \
@@ -88,6 +90,8 @@ generate-runner:
 		circuit_breaker_config.proto \
 		gpu_config.proto \
 		parameter_optimization_config.proto \
+		crash_prevention.proto \
+		performance_parameter.proto \
 		message.proto \
 		message_content.proto \
 		message_role.proto \
