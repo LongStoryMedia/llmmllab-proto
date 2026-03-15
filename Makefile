@@ -33,6 +33,7 @@ generate-composer:
 		runner/v1/runner.proto \
 		common/timestamp.proto \
 		common/version.proto
+	$(MAKE) generate-pyproject
 	@echo "Composer gRPC code generated"
 
 # =============================================================================
@@ -53,6 +54,7 @@ generate-runner:
 		composer/v1/composer.proto \
 		common/timestamp.proto \
 		common/version.proto
+	$(MAKE) generate-pyproject
 	@echo "Runner gRPC code generated"
 
 # Generate pyproject.toml for generated code
