@@ -21,14 +21,14 @@ generate: generate-composer generate-runner generate-pyproject
 
 generate-composer:
 	@echo "Generating composer gRPC code..."
-	@mkdir -p composer/gen/python
-	@rm -rf composer/gen/python/*
-	python -m grpc_tools.protoc \
+	@mkdir -p gen/python
+	@rm -rf gen/python/*
+	@python -m grpc_tools.protoc \
 		-I. \
 		-I/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages \
-		--python_out=composer/gen/python \
-		--grpc_python_out=composer/gen/python \
-		--pyi_out=composer/gen/python \
+		--python_out=gen/python \
+		--grpc_python_out=gen/python \
+		--pyi_out=gen/python \
 		composer/v1/composer.proto \
 		runner/v1/runner.proto \
 		common/timestamp.proto \
@@ -41,14 +41,14 @@ generate-composer:
 
 generate-runner:
 	@echo "Generating runner gRPC code..."
-	@mkdir -p runner/gen/python
-	@rm -rf runner/gen/python/*
-	python -m grpc_tools.protoc \
+	@mkdir -p gen/python
+	@rm -rf gen/python/*
+	@python -m grpc_tools.protoc \
 		-I. \
 		-I/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages \
-		--python_out=runner/gen/python \
-		--grpc_python_out=runner/gen/python \
-		--pyi_out=runner/gen/python \
+		--python_out=gen/python \
+		--grpc_python_out=gen/python \
+		--pyi_out=gen/python \
 		runner/v1/runner.proto \
 		composer/v1/composer.proto \
 		common/timestamp.proto \
@@ -58,44 +58,44 @@ generate-runner:
 # Generate pyproject.toml for generated code
 generate-pyproject:
 	@echo "Generating pyproject.toml..."
-	@mkdir -p runner/gen/python
-	@echo '[build-system]' > runner/gen/python/pyproject.toml
-	@echo 'requires = ["setuptools>=61.0"]' >> runner/gen/python/pyproject.toml
-	@echo 'build-backend = "setuptools.build_meta"' >> runner/gen/python/pyproject.toml
-	@echo '' >> runner/gen/python/pyproject.toml
-	@echo '[project]' >> runner/gen/python/pyproject.toml
-	@echo 'name = "runner-grpc"' >> runner/gen/python/pyproject.toml
-	@echo 'version = "0.1.0"' >> runner/gen/python/pyproject.toml
-	@echo 'description = "gRPC code for the llmmllab runner service"' >> runner/gen/python/pyproject.toml
-	@echo 'readme = "README.md"' >> runner/gen/python/pyproject.toml
-	@echo 'license = {text = "MIT"}' >> runner/gen/python/pyproject.toml
-	@echo 'authors = [{name = "llmmllab Team"}]' >> runner/gen/python/pyproject.toml
-	@echo 'requires-python = ">=3.10"' >> runner/gen/python/pyproject.toml
-	@echo 'dependencies = [' >> runner/gen/python/pyproject.toml
-	@echo '    "grpcio>=1.78.0",' >> runner/gen/python/pyproject.toml
-	@echo '    "grpcio-tools>=1.78.0",' >> runner/gen/python/pyproject.toml
-	@echo '    "protobuf>=4.25.0",' >> runner/gen/python/pyproject.toml
-	@echo ']' >> runner/gen/python/pyproject.toml
-	@echo '' >> runner/gen/python/pyproject.toml
-	@echo '[tool.setuptools]' >> runner/gen/python/pyproject.toml
-	@echo 'packages = [' >> runner/gen/python/pyproject.toml
-	@echo '    "runner",' >> runner/gen/python/pyproject.toml
-	@echo '    "runner.v1",' >> runner/gen/python/pyproject.toml
-	@echo '    "server",' >> runner/gen/python/pyproject.toml
-	@echo '    "server.v1",' >> runner/gen/python/pyproject.toml
-	@echo '    "composer",' >> runner/gen/python/pyproject.toml
-	@echo '    "composer.v1",' >> runner/gen/python/pyproject.toml
-	@echo '    "common",' >> runner/gen/python/pyproject.toml
-	@echo ']' >> runner/gen/python/pyproject.toml
-	@echo '' >> runner/gen/python/pyproject.toml
-	@echo '[tool.setuptools.package-data]' >> runner/gen/python/pyproject.toml
-	@echo '"runner" = ["py.typed"]' >> runner/gen/python/pyproject.toml
-	@echo '"runner.v1" = ["py.typed"]' >> runner/gen/python/pyproject.toml
-	@echo '"server" = ["py.typed"]' >> runner/gen/python/pyproject.toml
-	@echo '"server.v1" = ["py.typed"]' >> runner/gen/python/pyproject.toml
-	@echo '"composer" = ["py.typed"]' >> runner/gen/python/pyproject.toml
-	@echo '"composer.v1" = ["py.typed"]' >> runner/gen/python/pyproject.toml
-	@echo '"common" = ["py.typed"]' >> runner/gen/python/pyproject.toml
+	@mkdir -p gen/python
+	@echo '[build-system]' > gen/python/pyproject.toml
+	@echo 'requires = ["setuptools>=61.0"]' >> gen/python/pyproject.toml
+	@echo 'build-backend = "setuptools.build_meta"' >> gen/python/pyproject.toml
+	@echo '' >> gen/python/pyproject.toml
+	@echo '[project]' >> gen/python/pyproject.toml
+	@echo 'name = "runner-grpc"' >> gen/python/pyproject.toml
+	@echo 'version = "0.1.0"' >> gen/python/pyproject.toml
+	@echo 'description = "gRPC code for the llmmllab runner service"' >> gen/python/pyproject.toml
+	@echo 'readme = "README.md"' >> gen/python/pyproject.toml
+	@echo 'license = {text = "MIT"}' >> gen/python/pyproject.toml
+	@echo 'authors = [{name = "llmmllab Team"}]' >> gen/python/pyproject.toml
+	@echo 'requires-python = ">=3.10"' >> gen/python/pyproject.toml
+	@echo 'dependencies = [' >> gen/python/pyproject.toml
+	@echo '    "grpcio>=1.78.0",' >> gen/python/pyproject.toml
+	@echo '    "grpcio-tools>=1.78.0",' >> gen/python/pyproject.toml
+	@echo '    "protobuf>=4.25.0",' >> gen/python/pyproject.toml
+	@echo ']' >> gen/python/pyproject.toml
+	@echo '' >> gen/python/pyproject.toml
+	@echo '[tool.setuptools]' >> gen/python/pyproject.toml
+	@echo 'packages = [' >> gen/python/pyproject.toml
+	@echo '    "runner",' >> gen/python/pyproject.toml
+	@echo '    "runner.v1",' >> gen/python/pyproject.toml
+	@echo '    "server",' >> gen/python/pyproject.toml
+	@echo '    "server.v1",' >> gen/python/pyproject.toml
+	@echo '    "composer",' >> gen/python/pyproject.toml
+	@echo '    "composer.v1",' >> gen/python/pyproject.toml
+	@echo '    "common",' >> gen/python/pyproject.toml
+	@echo ']' >> gen/python/pyproject.toml
+	@echo '' >> gen/python/pyproject.toml
+	@echo '[tool.setuptools.package-data]' >> gen/python/pyproject.toml
+	@echo '"runner" = ["py.typed"]' >> gen/python/pyproject.toml
+	@echo '"runner.v1" = ["py.typed"]' >> gen/python/pyproject.toml
+	@echo '"server" = ["py.typed"]' >> gen/python/pyproject.toml
+	@echo '"server.v1" = ["py.typed"]' >> gen/python/pyproject.toml
+	@echo '"composer" = ["py.typed"]' >> gen/python/pyproject.toml
+	@echo '"composer.v1" = ["py.typed"]' >> gen/python/pyproject.toml
+	@echo '"common" = ["py.typed"]' >> gen/python/pyproject.toml
 	@echo "pyproject.toml generated"
 
 # =============================================================================
