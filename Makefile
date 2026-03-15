@@ -23,16 +23,35 @@ generate-composer:
 	@echo "Generating composer gRPC code..."
 	@mkdir -p ../gen/python
 	@rm -rf ../gen/python/*
-	@python -m grpc_tools.protoc \
+	@python3 -m grpc_tools.protoc \
 		-I. \
 		-I../.venv/lib/python3.12/site-packages \
+		-Illmmllab-schemas \
 		--python_out=../gen/python \
 		--grpc_python_out=../gen/python \
 		--pyi_out=../gen/python \
 		composer/v1/composer.proto \
 		runner/v1/runner.proto \
 		common/timestamp.proto \
-		common/version.proto
+		common/version.proto \
+		model_profile.proto \
+		model_parameters.proto \
+		model_profile_image_settings.proto \
+		model_profile_type.proto \
+		model_provider.proto \
+		model_task.proto \
+		circuit_breaker_config.proto \
+		gpu_config.proto \
+		parameter_optimization_config.proto \
+		message.proto \
+		message_content.proto \
+		message_role.proto \
+		document.proto \
+		intent_analysis.proto \
+		thought.proto \
+		tool_call.proto \
+		dynamic_tool.proto \
+		user_config.proto
 	@touch ../gen/python/composer/__init__.py
 	@touch ../gen/python/composer/v1/__init__.py
 	@touch ../gen/python/runner/__init__.py
@@ -49,16 +68,35 @@ generate-runner:
 	@echo "Generating runner gRPC code..."
 	@mkdir -p ../gen/python
 	@rm -rf ../gen/python/*
-	@python -m grpc_tools.protoc \
+	@python3 -m grpc_tools.protoc \
 		-I. \
 		-I../.venv/lib/python3.12/site-packages \
+		-Illmmllab-schemas \
 		--python_out=../gen/python \
 		--grpc_python_out=../gen/python \
 		--pyi_out=../gen/python \
 		runner/v1/runner.proto \
 		composer/v1/composer.proto \
 		common/timestamp.proto \
-		common/version.proto
+		common/version.proto \
+		model_profile.proto \
+		model_parameters.proto \
+		model_profile_image_settings.proto \
+		model_profile_type.proto \
+		model_provider.proto \
+		model_task.proto \
+		circuit_breaker_config.proto \
+		gpu_config.proto \
+		parameter_optimization_config.proto \
+		message.proto \
+		message_content.proto \
+		message_role.proto \
+		document.proto \
+		intent_analysis.proto \
+		thought.proto \
+		tool_call.proto \
+		dynamic_tool.proto \
+		user_config.proto
 	@touch ../gen/python/composer/__init__.py
 	@touch ../gen/python/composer/v1/__init__.py
 	@touch ../gen/python/runner/__init__.py
