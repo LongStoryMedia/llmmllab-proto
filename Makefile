@@ -25,7 +25,7 @@ generate-composer:
 	@rm -rf ../gen/python/*
 	@python -m grpc_tools.protoc \
 		-I. \
-		-I/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages \
+		-I../.venv/lib/python3.12/site-packages \
 		--python_out=../gen/python \
 		--grpc_python_out=../gen/python \
 		--pyi_out=../gen/python \
@@ -33,6 +33,11 @@ generate-composer:
 		runner/v1/runner.proto \
 		common/timestamp.proto \
 		common/version.proto
+	@touch ../gen/python/composer/__init__.py
+	@touch ../gen/python/composer/v1/__init__.py
+	@touch ../gen/python/runner/__init__.py
+	@touch ../gen/python/runner/v1/__init__.py
+	@touch ../gen/python/common/__init__.py
 	$(MAKE) generate-pyproject
 	@echo "Composer gRPC code generated"
 
@@ -46,7 +51,7 @@ generate-runner:
 	@rm -rf ../gen/python/*
 	@python -m grpc_tools.protoc \
 		-I. \
-		-I/home/lsm/Nextcloud/llmmllab/server/.venv/lib/python3.12/site-packages \
+		-I../.venv/lib/python3.12/site-packages \
 		--python_out=../gen/python \
 		--grpc_python_out=../gen/python \
 		--pyi_out=../gen/python \
@@ -54,6 +59,11 @@ generate-runner:
 		composer/v1/composer.proto \
 		common/timestamp.proto \
 		common/version.proto
+	@touch ../gen/python/composer/__init__.py
+	@touch ../gen/python/composer/v1/__init__.py
+	@touch ../gen/python/runner/__init__.py
+	@touch ../gen/python/runner/v1/__init__.py
+	@touch ../gen/python/common/__init__.py
 	$(MAKE) generate-pyproject
 	@echo "Runner gRPC code generated"
 
