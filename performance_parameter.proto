@@ -34,10 +34,10 @@ message PerformanceParameter {
   // Operator to adjust the parameter value during optimization
   enum OperatorEnum {
     OPERATORENUM_UNSPECIFIED = 0;
-    OPERATORENUM = 1;
-    OPERATORENUM = 2;
-    OPERATORENUM = 3;
-    OPERATORENUM = 4;
+    OPERATORENUM_ADD = 1;
+    OPERATORENUM_SUBTRACT = 2;
+    OPERATORENUM_MULTIPLY = 3;
+    OPERATORENUM_DIVIDE = 4;
   }
   
 
