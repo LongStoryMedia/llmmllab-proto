@@ -7,6 +7,8 @@ package models;
 
 option go_package = "github.com/example/models";
 
+import "google/protobuf/wrappers.proto";
+
 // Schema representing a LangChain BaseTool with its properties and configuration
 message Tool {
   // The unique name of the tool that clearly communicates its purpose

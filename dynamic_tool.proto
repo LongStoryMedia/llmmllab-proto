@@ -8,6 +8,7 @@ package models;
 option go_package = "github.com/example/models";
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
 
 // Schema for DynamicTool object that implements LangChain BaseTool interface
 message DynamicTool {

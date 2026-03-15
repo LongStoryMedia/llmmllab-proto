@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package composer.v1;
 
-import "google/api/annotations.proto";
 import "common/timestamp.proto";
 import "common/version.proto";
 import "message.proto";
