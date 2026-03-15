@@ -5,6 +5,12 @@
 
 all: generate
 
+# generate proto models
+models:
+	@echo "Generating proto models..."
+	@for f in llmmllab-schemas/*.yaml; do schema2code -o $$(basename $${f%.yaml}).proto -l proto --package models --go-package models $$f; done;
+	@echo "Proto models generated"
+
 # Generate gRPC code for all services
 generate: generate-server generate-composer generate-runner
 

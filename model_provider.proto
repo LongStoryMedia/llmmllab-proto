@@ -5,16 +5,16 @@ syntax = "proto3";
 
 package models;
 
-option go_package = "github.com/llmmllab/proto";
+option go_package = "github.com/example/models";
 
 // Provider / runtime of the model (e.g., 'llama.cpp', 'hf', 'hugging face', 'openai', 'stable-diffusion.cpp', 'anthropic')
 enum ModelProvider {
   MODELPROVIDER_UNSPECIFIED = 0;
-  LLAMA_CPP = 1;
-  HF = 2;
-  HUGGING_FACE = 3;
-  OPENAI = 4;
-  STABLE_DIFFUSION_CPP = 5;
-  ANTHROPIC = 6;
-  OTHER = 7;
+  MODELPROVIDER_LLAMA_CPP = 1;
+  MODELPROVIDER_HF = 2;
+  MODELPROVIDER_HUGGING_FACE = 3;
+  MODELPROVIDER_OPENAI = 4;
+  MODELPROVIDER_STABLE_DIFFUSION_CPP = 5;
+  MODELPROVIDER_ANTHROPIC = 6;
+  MODELPROVIDER_OTHER = 7;
 }

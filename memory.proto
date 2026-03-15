@@ -5,7 +5,7 @@ syntax = "proto3";
 
 package models;
 
-option go_package = "github.com/llmmllab/proto";
+option go_package = "github.com/example/models";
 
 import "google/protobuf/timestamp.proto";
 import "memory_fragment.proto";

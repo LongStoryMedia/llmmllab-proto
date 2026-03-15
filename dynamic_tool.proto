@@ -5,7 +5,7 @@ syntax = "proto3";
 
 package models;
 
-option go_package = "github.com/llmmllab/proto";
+option go_package = "github.com/example/models";
 
 import "google/protobuf/timestamp.proto";
 
@@ -44,8 +44,8 @@ message DynamicTool {
   // The tool response format. If 'content' then the output is interpreted as ToolMessage contents. If 'content_and_artifact' then output is expected to be a two-tuple of (content, artifact)
   enum ResponseFormatEnum {
     RESPONSEFORMATENUM_UNSPECIFIED = 0;
-    CONTENT = 1;
-    CONTENT_AND_ARTIFACT = 2;
+    RESPONSEFORMATENUM_CONTENT = 1;
+    RESPONSEFORMATENUM_CONTENT_AND_ARTIFACT = 2;
   }
   
 

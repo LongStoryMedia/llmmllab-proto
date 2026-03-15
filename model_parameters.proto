@@ -5,7 +5,7 @@ syntax = "proto3";
 
 package models;
 
-option go_package = "github.com/llmmllab/proto";
+option go_package = "github.com/example/models";
 
 // Parameters for configuring a language model
 message ModelParameters {
@@ -48,9 +48,9 @@ message ModelParameters {
   // Reasoning effort level for chain-of-thought processing
   enum ReasoningEffortEnum {
     REASONINGEFFORTENUM_UNSPECIFIED = 0;
-    LOW = 1;
-    MEDIUM = 2;
-    HIGH = 3;
+    REASONINGEFFORTENUM_LOW = 1;
+    REASONINGEFFORTENUM_MEDIUM = 2;
+    REASONINGEFFORTENUM_HIGH = 3;
   }
   
 

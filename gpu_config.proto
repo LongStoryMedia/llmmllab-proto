@@ -5,7 +5,7 @@ syntax = "proto3";
 
 package models;
 
-option go_package = "github.com/llmmllab/proto";
+option go_package = "github.com/example/models";
 
 // Configuration for GPU memory management and device allocation
 message GPUConfig {
@@ -24,9 +24,9 @@ message GPUConfig {
   // How to split model across devices
   enum SplitModeEnum {
     SPLITMODEENUM_UNSPECIFIED = 0;
-    NONE = 1;
-    LAYER = 2;
-    ROW = 3;
+    SPLITMODEENUM_NONE = 1;
+    SPLITMODEENUM_LAYER = 2;
+    SPLITMODEENUM_ROW = 3;
   }
   
 

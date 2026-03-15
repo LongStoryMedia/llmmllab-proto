@@ -5,14 +5,14 @@ syntax = "proto3";
 
 package models;
 
-option go_package = "github.com/llmmllab/proto";
+option go_package = "github.com/example/models";
 
 // Complexity level assessment for requests and operations
 enum ComplexityLevel {
   COMPLEXITYLEVEL_UNSPECIFIED = 0;
-  TRIVIAL = 1;
-  SIMPLE = 2;
-  MODERATE = 3;
-  COMPLEX = 4;
-  SPECIALIZED = 5;
+  COMPLEXITYLEVEL_TRIVIAL = 1;
+  COMPLEXITYLEVEL_SIMPLE = 2;
+  COMPLEXITYLEVEL_MODERATE = 3;
+  COMPLEXITYLEVEL_COMPLEX = 4;
+  COMPLEXITYLEVEL_SPECIALIZED = 5;
 }

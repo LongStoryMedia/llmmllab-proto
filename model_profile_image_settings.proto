@@ -5,7 +5,7 @@ syntax = "proto3";
 
 package models;
 
-option go_package = "github.com/llmmllab/proto";
+option go_package = "github.com/example/models";
 
 // ModelProfileImageSettings represents the image settings for a model profile
 message ModelProfileImageSettings {

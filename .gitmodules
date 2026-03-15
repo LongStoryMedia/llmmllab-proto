@@ -1,0 +1,4 @@
+[submodule "llmmllab-schemas"]
+	path = llmmllab-schemas
+	url = git@github.com:LongStoryMedia/llmmllab-schemas.git
+	branch = main

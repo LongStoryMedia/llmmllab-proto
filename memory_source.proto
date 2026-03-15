@@ -5,17 +5,17 @@ syntax = "proto3";
 
 package models;
 
-option go_package = "github.com/llmmllab/proto";
+option go_package = "github.com/example/models";
 
 // Source type for a memory
 enum MemorySource {
   MEMORYSOURCE_UNSPECIFIED = 0;
   // Memory type for conversation summaries
-  SUMMARY = 1;
+  MEMORYSOURCE_SUMMARY = 1;
   // Memory type for conversation messages
-  MESSAGE = 2;
+  MEMORYSOURCE_MESSAGE = 2;
   // Memory type for search topic syntheses
-  SEARCH = 3;
+  MEMORYSOURCE_SEARCH = 3;
   // Memory type for documents and file attachments
-  DOCUMENT = 4;
+  MEMORYSOURCE_DOCUMENT = 4;
 }

@@ -5,7 +5,7 @@ syntax = "proto3";
 
 package models;
 
-option go_package = "github.com/llmmllab/proto";
+option go_package = "github.com/example/models";
 
 // ModelDetails contains additional information about a model
 message ModelDetails {
@@ -30,13 +30,13 @@ message ModelDetails {
   // Precision of the model (e.g., 'fp16', 'bf16')
   enum PrecisionEnum {
     PRECISIONENUM_UNSPECIFIED = 0;
-    FP32 = 1;
-    FP16 = 2;
-    BF16 = 3;
-    INT8 = 4;
-    INT4 = 5;
-    INT2 = 6;
-    INT1 = 7;
+    PRECISIONENUM_FP32 = 1;
+    PRECISIONENUM_FP16 = 2;
+    PRECISIONENUM_BF16 = 3;
+    PRECISIONENUM_INT8 = 4;
+    PRECISIONENUM_INT4 = 5;
+    PRECISIONENUM_INT2 = 6;
+    PRECISIONENUM_INT1 = 7;
   }
   
 
@@ -45,12 +45,12 @@ message ModelDetails {
   // Specialization of the model (e.g., 'LoRA', 'Embedding', 'TextToImage', 'Audio', 'Vision')
   enum SpecializationEnum {
     SPECIALIZATIONENUM_UNSPECIFIED = 0;
-    LORA = 1;
-    EMBEDDING = 2;
-    TEXTTOIMAGE = 3;
-    IMAGETOIMAGE = 4;
-    AUDIO = 5;
-    TEXT = 6;
+    SPECIALIZATIONENUM_LORA = 1;
+    SPECIALIZATIONENUM_EMBEDDING = 2;
+    SPECIALIZATIONENUM_TEXTTOIMAGE = 3;
+    SPECIALIZATIONENUM_IMAGETOIMAGE = 4;
+    SPECIALIZATIONENUM_AUDIO = 5;
+    SPECIALIZATIONENUM_TEXT = 6;
   }
   
 

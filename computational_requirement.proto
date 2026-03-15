@@ -5,14 +5,14 @@ syntax = "proto3";
 
 package models;
 
-option go_package = "github.com/llmmllab/proto";
+option go_package = "github.com/example/models";
 
 // Computational requirement levels for request processing
 enum ComputationalRequirement {
   COMPUTATIONALREQUIREMENT_UNSPECIFIED = 0;
-  MINIMAL = 1;
-  LOW = 2;
-  MODERATE = 3;
-  HIGH = 4;
-  INTENSIVE = 5;
+  COMPUTATIONALREQUIREMENT_MINIMAL = 1;
+  COMPUTATIONALREQUIREMENT_LOW = 2;
+  COMPUTATIONALREQUIREMENT_MODERATE = 3;
+  COMPUTATIONALREQUIREMENT_HIGH = 4;
+  COMPUTATIONALREQUIREMENT_INTENSIVE = 5;
 }

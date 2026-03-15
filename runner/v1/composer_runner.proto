@@ -8,39 +8,13 @@ option java_package = "com.llmmllab.runner.v1";
 import "google/api/field_behavior.proto";
 import "google/protobuf/duration.proto";
 import "common/version.proto";
+import "model_profile.proto";
 
 // PipelineHandle represents a created pipeline
 message PipelineHandle {
     string pipeline_id = 1 [(google.api.field_behavior) = REQUIRED];
     string model_name = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
     bool is_cached = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
-}
-
-// ModelProfile defines model configuration
-message ModelProfile {
-    string model_name = 1 [(google.api.field_behavior) = REQUIRED];
-    string provider = 2 [(google.api.field_behavior) = REQUIRED];
-    string task_type = 3 [(google.api.field_behavior) = REQUIRED];
-    map<string, string> model_config = 4;
-    GPUConfig gpu_config = 5;
-    ParameterOptimizationConfig optimization_config = 6;
-}
-
-// GPUConfig defines GPU-specific settings
-message GPUConfig {
-    int32 gpu_layers = 1 [(google.api.field_behavior) = REQUIRED];
-    string main_gpu = 2;
-    double gpu_memory_fraction = 3 [(google.api.field_behavior) = REQUIRED];
-    bool flash_attn = 4;
-}
-
-// ParameterOptimizationConfig defines optimization settings
-message ParameterOptimizationConfig {
-    int32 batch_size = 1 [(google.api.field_behavior) = REQUIRED];
-    int32 context_size = 2 [(google.api.field_behavior) = REQUIRED];
-    int32 threads = 3 [(google.api.field_behavior) = REQUIRED];
-    bool mlock = 4;
-    bool mmap = 5;
 }
 
 // TokenChunk represents a chunk of generated tokens
@@ -129,7 +103,7 @@ message CacheStats {
 
 // CreatePipelineRequest requests pipeline creation
 message CreatePipelineRequest {
-    ModelProfile profile = 1 [(google.api.field_behavior) = REQUIRED];
+    models.ModelProfile profile = 1 [(google.api.field_behavior) = REQUIRED];
     string priority = 2 [(google.api.field_behavior) = REQUIRED];
     string grammar_type = 3;
     map<string, string> metadata = 4;

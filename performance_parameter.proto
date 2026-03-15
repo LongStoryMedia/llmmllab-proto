@@ -5,7 +5,7 @@ syntax = "proto3";
 
 package models;
 
-option go_package = "github.com/llmmllab/proto";
+option go_package = "github.com/example/models";
 
 import "parameter_tuning_strategy.proto";
 
@@ -14,10 +14,10 @@ message PerformanceParameter {
   // Name of the performance parameter
   enum ParameterNameEnum {
     PARAMETERNAMEENUM_UNSPECIFIED = 0;
-    N_CTX = 1;
-    N_BATCH = 2;
-    N_UBATCH = 3;
-    N_GPU_LAYERS = 4;
+    PARAMETERNAMEENUM_N_CTX = 1;
+    PARAMETERNAMEENUM_N_BATCH = 2;
+    PARAMETERNAMEENUM_N_UBATCH = 3;
+    PARAMETERNAMEENUM_N_GPU_LAYERS = 4;
   }
   
 
@@ -34,10 +34,10 @@ message PerformanceParameter {
   // Operator to adjust the parameter value during optimization
   enum OperatorEnum {
     OPERATORENUM_UNSPECIFIED = 0;
-    OPERATORENUM_PLUS = 1;
-    OPERATORENUM_MINUS = 2;
-    OPERATORENUM_MULTIPLY = 3;
-    OPERATORENUM_DIVIDE = 4;
+    OPERATORENUM = 1;
+    OPERATORENUM = 2;
+    OPERATORENUM = 3;
+    OPERATORENUM = 4;
   }
   
 

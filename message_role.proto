@@ -5,15 +5,15 @@ syntax = "proto3";
 
 package models;
 
-option go_package = "github.com/llmmllab/proto";
+option go_package = "github.com/example/models";
 
 // Role of a participant in a chat conversation
 enum MessageRole {
   MESSAGEROLE_UNSPECIFIED = 0;
-  USER = 1;
-  ASSISTANT = 2;
-  SYSTEM = 3;
-  TOOL = 4;
-  AGENT = 5;
-  OBSERVER = 6;
+  MESSAGEROLE_USER = 1;
+  MESSAGEROLE_ASSISTANT = 2;
+  MESSAGEROLE_SYSTEM = 3;
+  MESSAGEROLE_TOOL = 4;
+  MESSAGEROLE_AGENT = 5;
+  MESSAGEROLE_OBSERVER = 6;
 }
