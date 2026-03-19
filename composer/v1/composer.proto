@@ -2,11 +2,11 @@ syntax = "proto3";
 
 package composer.v1;
 
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
 import "common/timestamp.proto";
 import "common/version.proto";
-import "message.proto";
-import "dynamic_tool.proto";
-import "user_config.proto";
+import "server/v1/server.proto";
 
 option go_package = "github.com/llmmllab/proto/composer/v1;composerv1";
 option java_package = "com.llmmllab.composer.v1";
@@ -14,7 +14,7 @@ option java_package = "com.llmmllab.composer.v1";
 // WorkflowHandle represents a created workflow
 message WorkflowHandle {
     string workflow_id = 1;
-    common.Timestamp created_at = 2;
+    google.protobuf.Timestamp created_at = 2;
 }
 
 // WorkflowState represents the state of a workflow
@@ -23,8 +23,8 @@ message WorkflowState {
     int32 conversation_id = 2;
     string workflow_type = 3;
     map<string, string> variables = 4;
-    common.Timestamp created_at = 5;
-    repeated models.Message messages = 6;
+    google.protobuf.Timestamp created_at = 5;
+    repeated server.v1.ConversationMessage messages = 6;
 }
 
 // ComposeWorkflowRequest requests workflow composition
@@ -32,9 +32,9 @@ message ComposeWorkflowRequest {
     string user_id = 1;
     string workflow_type = 2;
     string model_name = 3;
-    common.Timestamp timestamp = 4;
-    models.UserConfig user_config = 5;
-    repeated models.DynamicTool tools = 6;
+    google.protobuf.Timestamp timestamp = 4;
+    server.v1.UserConfig user_config = 5;
+    repeated server.v1.DynamicTool tools = 6;
 }
 
 // ExecuteWorkflowRequest requests workflow execution with streaming
@@ -42,13 +42,13 @@ message ExecuteWorkflowRequest {
     string workflow_id = 1;
     WorkflowState initial_state = 2;
     bool stream_events = 3;
-    repeated models.Message messages = 4;
+    repeated server.v1.ConversationMessage messages = 4;
 }
 
 // WorkflowEvent represents a workflow execution event
 message WorkflowEvent {
     string event_type = 1;
-    common.Timestamp timestamp = 2;
+    google.protobuf.Timestamp timestamp = 2;
     oneof payload {
         WorkflowStepStart step_start = 3;
         WorkflowStepComplete step_complete = 4;
@@ -94,7 +94,7 @@ message ChatDelta {
 // ChatResponseDelta represents a streaming delta response with metadata
 message ChatResponseDelta {
     ChatDelta delta = 1;
-    common.Timestamp created_at = 2;
+    google.protobuf.Timestamp created_at = 2;
     repeated float context = 3;
     string finish_reason = 4;
     double total_duration = 5;
@@ -111,7 +111,7 @@ message ChatResponseDelta {
 // ChatResponseComplete represents a workflow completion response
 message ChatResponseComplete {
     WorkflowComplete complete = 1;
-    common.Timestamp created_at = 2;
+    google.protobuf.Timestamp created_at = 2;
     repeated float context = 3;
     string finish_reason = 4;
     double total_duration = 5;
@@ -145,7 +145,7 @@ message CreateInitialStateRequest {
     string user_id = 1;
     int32 conversation_id = 2;
     string workflow_type = 3;
-    repeated models.Message messages = 4;
+    repeated server.v1.ConversationMessage messages = 4;
 }
 
 // ClearWorkflowCacheRequest requests workflow cache clearing
@@ -170,8 +170,8 @@ message GetWorkflowStatusResponse {
     string workflow_id = 1;
     string status = 2;
     WorkflowState state = 3;
-    common.Timestamp created_at = 4;
-    common.Timestamp completed_at = 5;
+    google.protobuf.Timestamp created_at = 4;
+    google.protobuf.Timestamp completed_at = 5;
 }
 
 // ComposerService provides workflow composition and execution

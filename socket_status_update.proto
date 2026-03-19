@@ -3,9 +3,9 @@
 
 syntax = "proto3";
 
-package models;
+package messages;
 
-option go_package = "github.com/example/models";
+option go_package = "github.com/example/messages";
 
 import "socket_stage_type.proto";
 

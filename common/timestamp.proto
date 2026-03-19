@@ -30,15 +30,15 @@
 
 syntax = "proto3";
 
-package common;
+package common.v1;
 
 option cc_enable_arenas = true;
-option go_package = "github.com/llmmllab/proto/common;common";
-option java_package = "com.llmmllab.common";
+option go_package = "github.com/llmmllab/proto/common/v1;commonv1";
+option java_package = "com.llmmllab.common.v1";
 option java_outer_classname = "TimestampProto";
 option java_multiple_files = true;
-option objc_class_prefix = "CMT";
-option csharp_namespace = "LLMMLLab.Common";
+option objc_class_prefix = "COMMON";
+option csharp_namespace = "LLMMLab.Common.V1";
 
 // A Timestamp represents a point in time independent of any time zone or local
 // calendar, encoded as a count of seconds and fractions of seconds at
