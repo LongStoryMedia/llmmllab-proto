@@ -14,12 +14,18 @@ The proto repository defines gRPC service interfaces for communication between:
 
 ```
 proto/
-├── common/           # Common protobuf types (timestamp, etc.)
-├── server/           # Server service definitions
-├── composer/         # Composer service definitions
-├── runner/           # Runner service definitions
-└── *.proto           # Standalone data model definitions
+├── llmmllab-schemas/ # Git submodule - YAML schema definitions
+├── proto/            # Protocol Buffer definitions
+│   └── v1/           # Versioned proto files
+│       └── *.proto   # Proto service and message definitions
+├── gen/              # Generated proto messages (auto-generated from schemas)
+│   └── python/       # Python protobuf code
+└── Makefile
 ```
+
+## Submodules
+
+- **llmmllab-schemas** - Git submodule containing YAML schema definitions used to generate proto messages
 
 ## Services
 
@@ -53,27 +59,63 @@ pip install grpcio grpcio-tools
 ### Generating Code
 
 ```bash
-# Generate all gRPC code
-make generate
+# Generate proto messages from llmmllab-schemas
+make messages
+```
 
-# Generate for specific service
-make generate-server      # Generate server gRPC code
-make generate-composer    # Generate composer gRPC code
-make generate-runner      # Generate runner gRPC code
+### Submodule Management
 
-# Generate Python code only
-make generate-python
-
-# Generate TypeScript code only
-make generate-typescript
+```bash
+# Update llmmllab-schemas submodule to latest
+git submodule update --init --recursive --remote
 ```
 
 ### Adding New Services
 
-1. Create a new `.proto` file in the appropriate directory
+1. Create a new `.proto` file in the `proto/v1/` directory
 2. Define your service and messages
-3. Generate code for each consumer service
-4. Update this README with the new service documentation
+3. Commit and push to main
+4. Update submodules in consumer repos and run `make proto`
+
+### Schema-Driven Message Generation
+
+All proto messages are generated from YAML schemas in `llmmllab-schemas`. **Never edit proto message definitions manually** — update the YAML schema and regenerate.
+
+#### Model Update Workflow
+
+**To update a proto message, follow this exact sequence:**
+
+1. **Update the YAML schema** in the llmmllab-schemas repo
+   - Edit the appropriate YAML file in the schemas repository
+   - Commit and push to main branch
+
+2. **Regenerate proto messages** in this proto repo
+   ```bash
+   cd <proto-repo>
+   git submodule update --init --recursive --remote  # Update llmmllab-schemas submodule
+   make messages                                      # Generate proto messages
+   git add gen/
+   git commit -m "Update proto messages from schemas"
+   git push origin main
+   ```
+
+3. **Update consumer applications** (server, composer, runner)
+   ```bash
+   # For each application
+   cd <app-repo>
+   git submodule update --init --recursive --remote  # Update llmmllab-proto submodule
+   make proto                                         # Regenerate gRPC code
+   git add gen/
+   git commit -m "Update gRPC code from proto"
+   git push origin main
+   ```
+
+#### Important Rules
+
+- **Never edit generated proto messages directly**: `gen/**/*.proto`
+- **Always update schemas first**: Message changes must originate in llmmllab-schemas
+- **Push to main between steps**: Consumer repos depend on this being on main
+- **Service definitions are manual**: `service` blocks in `.proto` files are maintained manually
 
 ## Versioning
 
@@ -82,9 +124,12 @@ Protos use semantic versioning:
 - `v1alpha/` - Alpha (experimental)
 - `v1beta/` - Beta (stabilizing)
 
-## Related Repositories
+## Consumer Repositories
 
-- **llmmllab-schemas** - YAML schema definitions (source of truth)
-- **llmmllab-server** - REST API server
-- **llmmllab-composer** - Agent orchestration
-- **llmmllab-runner** - Model execution service
+- **llmmllab-server** - REST API server (uses this as submodule)
+- **llmmllab-composer** - Agent orchestration (uses this as submodule)
+- **llmmllab-runner** - Model execution service (uses this as submodule)
+
+## Upstream Dependency
+
+- **llmmllab-schemas** - YAML schema definitions (source of truth for messages)

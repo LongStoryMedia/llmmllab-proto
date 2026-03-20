@@ -7,6 +7,11 @@ all: generate
 
 PYTHON_PATH=/home/lsm/Nextcloud/llmmllab/server/.venv/bin/python
 
+messages:
+	@echo "Generating gRPC code for all services..."
+	./generate-messages.sh
+	@echo "All gRPC code generated"
+
 # =============================================================================
 # Composer Service
 # =============================================================================
