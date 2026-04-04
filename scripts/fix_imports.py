@@ -52,6 +52,7 @@ def fix_imports_in_file(filepath, model_proto_names):
     #   from models import model_profile_pb2 as model__profile__pb2
     #   import model_profile_pb2
     #   from models import model_profile_pb2
+    # Use gen_python.models to avoid conflict with local models/ directory
     name_pattern = '|'.join(re.escape(n) for n in model_proto_names)
     model_pattern = re.compile(
         r'^(?:import |from models import )((?:' + name_pattern + r')_pb2)(?: as (\w+))?$',
@@ -62,9 +63,9 @@ def fix_imports_in_file(filepath, model_proto_names):
         module_name = match.group(1)
         alias = match.group(2)
         if alias:
-            return f'from models import {module_name} as {alias}'
+            return f'from gen.python.models import {module_name} as {alias}'
         else:
-            return f'from models import {module_name}'
+            return f'from gen.python.models import {module_name}'
 
     new_content = model_pattern.sub(replace_model_import, content)
 
@@ -170,7 +171,13 @@ def main(gen_python_dir):
     modified_count = 0
 
     # Get model proto names dynamically from the proto directory
-    proto_dir = os.path.join(os.path.dirname(os.path.dirname(gen_python_dir)), 'proto')
+    # gen_python_dir is like "gen/python" under the app directory
+    # The proto directory is at "llmmllab-proto" relative to the app root
+    app_root = os.path.dirname(os.path.dirname(gen_python_dir))
+    # Handle both cases: when gen_python_dir is relative or absolute
+    if app_root == '':
+        app_root = '.'
+    proto_dir = os.path.join(app_root, 'llmmllab-proto')
     model_proto_names = get_model_proto_names(proto_dir)
 
     for root, _, files in os.walk(gen_python_dir):
