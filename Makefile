@@ -5,7 +5,7 @@
 
 all: generate
 
-PYTHON_PATH=/home/lsm/Nextcloud/llmmllab/server/.venv/bin/python
+PYTHON_PATH=python
 
 messages:
 	@echo "Generating gRPC code for all services..."
