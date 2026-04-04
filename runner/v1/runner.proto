@@ -111,7 +111,7 @@ message CacheStats {
 
 // CreatePipelineRequest requests pipeline creation
 message CreatePipelineRequest {
-    models.ModelProfile profile = 1;
+    messages.ModelProfile profile = 1;
     string priority = 2;
     string grammar_type = 3;
     map<string, string> metadata = 4;
@@ -221,7 +221,7 @@ message ListModelsResponse {
 
 message LoadModelRequest {
     string model_name = 1;
-    models.ModelProfile profile = 2;
+    messages.ModelProfile profile = 2;
 }
 
 message UnloadModelRequest {
@@ -238,7 +238,7 @@ message ModelInfo {
     string task_type = 3;
     bool is_loaded = 4;
     int64 memory_bytes = 5;
-    common.Timestamp loaded_at = 6;
+    common.v1.Timestamp loaded_at = 6;
 }
 
 message GetModelListRequest {}
