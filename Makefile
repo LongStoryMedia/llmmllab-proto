@@ -22,7 +22,7 @@ generate-composer:
 	@mkdir -p ../gen/python/runner/v1
 	@mkdir -p ../gen/python/composer/v1
 	@mkdir -p ../gen/python/common
-	@mkdir -p ../gen/python/models
+	@mkdir -p ../gen/python/messages
 	$(PYTHON_PATH) -m grpc_tools.protoc \
 		-I. \
 		-I../.venv/lib/python3.12/site-packages \
@@ -38,131 +38,131 @@ generate-composer:
 		-I. \
 		-I../.venv/lib/python3.12/site-packages \
 		-Illmmllab-schemas \
-		--python_out=../gen/python/models \
-		--grpc_python_out=../gen/python/models \
-		--pyi_out=../gen/python/models \
-		model_profile.proto \
-		model_parameters.proto \
-		model_profile_image_settings.proto \
-		model_profile_type.proto \
-		model_provider.proto \
-		model_task.proto \
-		circuit_breaker_config.proto \
-		gpu_config.proto \
-		parameter_optimization_config.proto \
-		crash_prevention.proto \
-		performance_parameter.proto \
-		parameter_tuning_strategy.proto \
-		message.proto \
-		message_content.proto \
-		message_role.proto \
-		document.proto \
-		intent_analysis.proto \
-		thought.proto \
-		tool_call.proto \
-		dynamic_tool.proto \
-		user_config.proto \
-		analysis_depth.proto \
-		api_key.proto \
-		api_key_request.proto \
-		api_key_response.proto \
-		auth_config.proto \
-		capability_profile_mapping.proto \
-		chat_req.proto \
-		chat_response.proto \
-		complexity_estimate.proto \
-		complexity_level.proto \
-		computational_requirement.proto \
-		config.proto \
-		conversation_ctx.proto \
-		conversation.proto \
-		database_config.proto \
-		dev_stats.proto \
-		document_source.proto \
-		embedding_req.proto \
-		embedding_response.proto \
-		event_stream_config.proto \
-		execution_state.proto \
-		generate_req.proto \
-		generate_response.proto \
-		generation_state.proto \
-		image_generation_config.proto \
-		image_generation_request.proto \
-		image_generation_response.proto \
-		image_metadata.proto \
-		inference_service.proto \
-		inference_service_config.proto \
-		intent.proto \
-		internal_config.proto \
-		lora_weight.proto \
-		memory.proto \
-		memory_config.proto \
-		memory_fragment.proto \
-		memory_source.proto \
-		message_type.proto \
-		model.proto \
-		model_configuration_data.proto \
-		model_details.proto \
-		model_profile_config.proto \
-		node_metadata.proto \
-		oom_recovery_attempt_data.proto \
-		optimal_parameters.proto \
-		pagination.proto \
-		prediction_features.proto \
-		recovery_strategy.proto \
-		redis_config.proto \
-		required_capability.proto \
-		research_question.proto \
-		research_question_result.proto \
-		research_subtask.proto \
-		research_task.proto \
-		research_task_status.proto \
-		resource_usage.proto \
-		response_format.proto \
-		response_section.proto \
-		search_result.proto \
-		search_result_content.proto \
-		search_topic_synthesis.proto \
-		server_config.proto \
-		socket_connection_type.proto \
-		socket_message.proto \
-		socket_session.proto \
-		socket_stage_type.proto \
-		socket_status_update.proto \
-		summarization_config.proto \
-		summary.proto \
-		summary_style.proto \
-		summary_type.proto \
-		system_gpu_stats.proto \
-		todo_item.proto \
-		tool.proto \
-		tool_analysis_request.proto \
-		user.proto \
-		web_socket_connection.proto \
-		workflow_config.proto \
-		workflow_type.proto \
-		technical_domain.proto \
-		message_content_type.proto \
-		lang_graph_node_state.proto \
-		lang_graph_state.proto \
-		learned_limits.proto \
-		pipeline_metrics.proto \
-		pipeline_priority.proto \
-		pipeline_state.proto \
-		pipeline_execution_context.proto \
-		pipeline_execution_state.proto \
-		ml_model_performance.proto \
-		preferences_config.proto \
-		rabbitmq_config.proto \
-		tool_config.proto \
-		tool_needs.proto
-	@touch ../gen/python/models/__init__.py
+		--python_out=../gen/python/messages \
+		--grpc_python_out=../gen/python/messages \
+		--pyi_out=../gen/python/messages \
+		messages/model_profile.proto \
+		messages/model_parameters.proto \
+		messages/model_profile_image_settings.proto \
+		messages/model_profile_type.proto \
+		messages/model_provider.proto \
+		messages/model_task.proto \
+		messages/circuit_breaker_config.proto \
+		messages/gpu_config.proto \
+		messages/parameter_optimization_config.proto \
+		messages/crash_prevention.proto \
+		messages/performance_parameter.proto \
+		messages/parameter_tuning_strategy.proto \
+		messages/message.proto \
+		messages/message_content.proto \
+		messages/message_role.proto \
+		messages/document.proto \
+		messages/intent_analysis.proto \
+		messages/thought.proto \
+		messages/tool_call.proto \
+		messages/dynamic_tool.proto \
+		messages/user_config.proto \
+		messages/analysis_depth.proto \
+		messages/api_key.proto \
+		messages/api_key_request.proto \
+		messages/api_key_response.proto \
+		messages/auth_config.proto \
+		messages/capability_profile_mapping.proto \
+		messages/chat_req.proto \
+		messages/chat_response.proto \
+		messages/complexity_estimate.proto \
+		messages/complexity_level.proto \
+		messages/computational_requirement.proto \
+		messages/config.proto \
+		messages/conversation_ctx.proto \
+		messages/conversation.proto \
+		messages/database_config.proto \
+		messages/dev_stats.proto \
+		messages/document_source.proto \
+		messages/embedding_req.proto \
+		messages/embedding_response.proto \
+		messages/event_stream_config.proto \
+		messages/execution_state.proto \
+		messages/generate_req.proto \
+		messages/generate_response.proto \
+		messages/generation_state.proto \
+		messages/image_generation_config.proto \
+		messages/image_generation_request.proto \
+		messages/image_generation_response.proto \
+		messages/image_metadata.proto \
+		messages/inference_service.proto \
+		messages/inference_service_config.proto \
+		messages/intent.proto \
+		messages/internal_config.proto \
+		messages/lora_weight.proto \
+		messages/memory.proto \
+		messages/memory_config.proto \
+		messages/memory_fragment.proto \
+		messages/memory_source.proto \
+		messages/message_type.proto \
+		messages/model.proto \
+		messages/model_configuration_data.proto \
+		messages/model_details.proto \
+		messages/model_profile_config.proto \
+		messages/node_metadata.proto \
+		messages/oom_recovery_attempt_data.proto \
+		messages/optimal_parameters.proto \
+		messages/pagination.proto \
+		messages/prediction_features.proto \
+		messages/recovery_strategy.proto \
+		messages/redis_config.proto \
+		messages/required_capability.proto \
+		messages/research_question.proto \
+		messages/research_question_result.proto \
+		messages/research_subtask.proto \
+		messages/research_task.proto \
+		messages/research_task_status.proto \
+		messages/resource_usage.proto \
+		messages/response_format.proto \
+		messages/response_section.proto \
+		messages/search_result.proto \
+		messages/search_result_content.proto \
+		messages/search_topic_synthesis.proto \
+		messages/server_config.proto \
+		messages/socket_connection_type.proto \
+		messages/socket_message.proto \
+		messages/socket_session.proto \
+		messages/socket_stage_type.proto \
+		messages/socket_status_update.proto \
+		messages/summarization_config.proto \
+		messages/summary.proto \
+		messages/summary_style.proto \
+		messages/summary_type.proto \
+		messages/system_gpu_stats.proto \
+		messages/todo_item.proto \
+		messages/tool.proto \
+		messages/tool_analysis_request.proto \
+		messages/user.proto \
+		messages/web_socket_connection.proto \
+		messages/workflow_config.proto \
+		messages/workflow_type.proto \
+		messages/technical_domain.proto \
+		messages/message_content_type.proto \
+		messages/lang_graph_node_state.proto \
+		messages/lang_graph_state.proto \
+		messages/learned_limits.proto \
+		messages/pipeline_metrics.proto \
+		messages/pipeline_priority.proto \
+		messages/pipeline_state.proto \
+		messages/pipeline_execution_context.proto \
+		messages/pipeline_execution_state.proto \
+		messages/ml_model_performance.proto \
+		messages/preferences_config.proto \
+		messages/rabbitmq_config.proto \
+		messages/tool_config.proto \
+		messages/tool_needs.proto
+	@touch ../gen/python/messages/__init__.py
 	@touch ../gen/python/composer/__init__.py
 	@touch ../gen/python/composer/v1/__init__.py
 	@touch ../gen/python/runner/__init__.py
 	@touch ../gen/python/runner/v1/__init__.py
 	@touch ../gen/python/common/__init__.py
-	$(PYTHON_PATH) scripts/fix_imports.py ../gen/python
+	# Skip fix_imports.py - new structure generates correct imports
 	$(MAKE) generate-pyproject
 	@echo "Composer gRPC code generated"
 
@@ -176,7 +176,7 @@ generate-runner:
 	@mkdir -p ../gen/python/runner/v1
 	@mkdir -p ../gen/python/composer/v1
 	@mkdir -p ../gen/python/common
-	@mkdir -p ../gen/python/models
+	@mkdir -p ../gen/python/messages
 	$(PYTHON_PATH) -m grpc_tools.protoc \
 		-I. \
 		-I../.venv/lib/python3.12/site-packages \
@@ -192,125 +192,125 @@ generate-runner:
 		-I. \
 		-I../.venv/lib/python3.12/site-packages \
 		-Illmmllab-schemas \
-		--python_out=../gen/python/models \
-		--grpc_python_out=../gen/python/models \
-		--pyi_out=../gen/python/models \
-		model_profile.proto \
-		model_parameters.proto \
-		model_profile_image_settings.proto \
-		model_profile_type.proto \
-		model_provider.proto \
-		model_task.proto \
-		circuit_breaker_config.proto \
-		gpu_config.proto \
-		parameter_optimization_config.proto \
-		crash_prevention.proto \
-		performance_parameter.proto \
-		parameter_tuning_strategy.proto \
-		message.proto \
-		message_content.proto \
-		message_role.proto \
-		document.proto \
-		intent_analysis.proto \
-		thought.proto \
-		tool_call.proto \
-		dynamic_tool.proto \
-		user_config.proto \
-		analysis_depth.proto \
-		api_key.proto \
-		api_key_request.proto \
-		api_key_response.proto \
-		auth_config.proto \
-		capability_profile_mapping.proto \
-		chat_req.proto \
-		chat_response.proto \
-		complexity_estimate.proto \
-		complexity_level.proto \
-		computational_requirement.proto \
-		config.proto \
-		conversation_ctx.proto \
-		conversation.proto \
-		database_config.proto \
-		dev_stats.proto \
-		document_source.proto \
-		embedding_req.proto \
-		embedding_response.proto \
-		event_stream_config.proto \
-		execution_state.proto \
-		generate_req.proto \
-		generate_response.proto \
-		generation_state.proto \
-		image_generation_config.proto \
-		image_generation_request.proto \
-		image_generation_response.proto \
-		image_metadata.proto \
-		inference_service.proto \
-		inference_service_config.proto \
-		intent.proto \
-		internal_config.proto \
-		lora_weight.proto \
-		memory.proto \
-		memory_config.proto \
-		memory_fragment.proto \
-		memory_source.proto \
-		message_type.proto \
-		model.proto \
-		model_configuration_data.proto \
-		model_details.proto \
-		model_profile_config.proto \
-		node_metadata.proto \
-		oom_recovery_attempt_data.proto \
-		optimal_parameters.proto \
-		pagination.proto \
-		prediction_features.proto \
-		recovery_strategy.proto \
-		redis_config.proto \
-		required_capability.proto \
-		research_question.proto \
-		research_question_result.proto \
-		research_subtask.proto \
-		research_task.proto \
-		research_task_status.proto \
-		resource_usage.proto \
-		response_format.proto \
-		response_section.proto \
-		search_result.proto \
-		search_result_content.proto \
-		search_topic_synthesis.proto \
-		server_config.proto \
-		socket_connection_type.proto \
-		socket_message.proto \
-		socket_session.proto \
-		socket_stage_type.proto \
-		socket_status_update.proto \
-		summarization_config.proto \
-		summary.proto \
-		summary_style.proto \
-		summary_type.proto \
-		system_gpu_stats.proto \
-		todo_item.proto \
-		tool.proto \
-		tool_analysis_request.proto \
-		user.proto \
-		web_socket_connection.proto \
-		workflow_config.proto \
-		workflow_type.proto \
-		technical_domain.proto \
-		message_content_type.proto \
-		lang_graph_node_state.proto \
-		lang_graph_state.proto \
-		learned_limits.proto \
-		pipeline_metrics.proto \
-		pipeline_priority.proto \
-		pipeline_state.proto \
-		pipeline_execution_context.proto \
-		pipeline_execution_state.proto \
-		ml_model_performance.proto \
-		preferences_config.proto \
-		rabbitmq_config.proto \
-		tool_config.proto \
-		tool_needs.proto
-	@touch ../gen/python/models/__init__.py
+		--python_out=../gen/python/messages \
+		--grpc_python_out=../gen/python/messages \
+		--pyi_out=../gen/python/messages \
+		messages/model_profile.proto \
+		messages/model_parameters.proto \
+		messages/model_profile_image_settings.proto \
+		messages/model_profile_type.proto \
+		messages/model_provider.proto \
+		messages/model_task.proto \
+		messages/circuit_breaker_config.proto \
+		messages/gpu_config.proto \
+		messages/parameter_optimization_config.proto \
+		messages/crash_prevention.proto \
+		messages/performance_parameter.proto \
+		messages/parameter_tuning_strategy.proto \
+		messages/message.proto \
+		messages/message_content.proto \
+		messages/message_role.proto \
+		messages/document.proto \
+		messages/intent_analysis.proto \
+		messages/thought.proto \
+		messages/tool_call.proto \
+		messages/dynamic_tool.proto \
+		messages/user_config.proto \
+		messages/analysis_depth.proto \
+		messages/api_key.proto \
+		messages/api_key_request.proto \
+		messages/api_key_response.proto \
+		messages/auth_config.proto \
+		messages/capability_profile_mapping.proto \
+		messages/chat_req.proto \
+		messages/chat_response.proto \
+		messages/complexity_estimate.proto \
+		messages/complexity_level.proto \
+		messages/computational_requirement.proto \
+		messages/config.proto \
+		messages/conversation_ctx.proto \
+		messages/conversation.proto \
+		messages/database_config.proto \
+		messages/dev_stats.proto \
+		messages/document_source.proto \
+		messages/embedding_req.proto \
+		messages/embedding_response.proto \
+		messages/event_stream_config.proto \
+		messages/execution_state.proto \
+		messages/generate_req.proto \
+		messages/generate_response.proto \
+		messages/generation_state.proto \
+		messages/image_generation_config.proto \
+		messages/image_generation_request.proto \
+		messages/image_generation_response.proto \
+		messages/image_metadata.proto \
+		messages/inference_service.proto \
+		messages/inference_service_config.proto \
+		messages/intent.proto \
+		messages/internal_config.proto \
+		messages/lora_weight.proto \
+		messages/memory.proto \
+		messages/memory_config.proto \
+		messages/memory_fragment.proto \
+		messages/memory_source.proto \
+		messages/message_type.proto \
+		messages/model.proto \
+		messages/model_configuration_data.proto \
+		messages/model_details.proto \
+		messages/model_profile_config.proto \
+		messages/node_metadata.proto \
+		messages/oom_recovery_attempt_data.proto \
+		messages/optimal_parameters.proto \
+		messages/pagination.proto \
+		messages/prediction_features.proto \
+		messages/recovery_strategy.proto \
+		messages/redis_config.proto \
+		messages/required_capability.proto \
+		messages/research_question.proto \
+		messages/research_question_result.proto \
+		messages/research_subtask.proto \
+		messages/research_task.proto \
+		messages/research_task_status.proto \
+		messages/resource_usage.proto \
+		messages/response_format.proto \
+		messages/response_section.proto \
+		messages/search_result.proto \
+		messages/search_result_content.proto \
+		messages/search_topic_synthesis.proto \
+		messages/server_config.proto \
+		messages/socket_connection_type.proto \
+		messages/socket_message.proto \
+		messages/socket_session.proto \
+		messages/socket_stage_type.proto \
+		messages/socket_status_update.proto \
+		messages/summarization_config.proto \
+		messages/summary.proto \
+		messages/summary_style.proto \
+		messages/summary_type.proto \
+		messages/system_gpu_stats.proto \
+		messages/todo_item.proto \
+		messages/tool.proto \
+		messages/tool_analysis_request.proto \
+		messages/user.proto \
+		messages/web_socket_connection.proto \
+		messages/workflow_config.proto \
+		messages/workflow_type.proto \
+		messages/technical_domain.proto \
+		messages/message_content_type.proto \
+		messages/lang_graph_node_state.proto \
+		messages/lang_graph_state.proto \
+		messages/learned_limits.proto \
+		messages/pipeline_metrics.proto \
+		messages/pipeline_priority.proto \
+		messages/pipeline_state.proto \
+		messages/pipeline_execution_context.proto \
+		messages/pipeline_execution_state.proto \
+		messages/ml_model_performance.proto \
+		messages/preferences_config.proto \
+		messages/rabbitmq_config.proto \
+		messages/tool_config.proto \
+		messages/tool_needs.proto
+	@touch ../gen/python/messages/__init__.py
 	@touch ../gen/python/composer/__init__.py
 	@touch ../gen/python/composer/v1/__init__.py
 	@touch ../gen/python/runner/__init__.py
@@ -351,7 +351,7 @@ generate-pyproject:
 	@echo '    "composer",' >> ../gen/python/pyproject.toml
 	@echo '    "composer.v1",' >> ../gen/python/pyproject.toml
 	@echo '    "common",' >> ../gen/python/pyproject.toml
-	@echo '    "models",' >> ../gen/python/pyproject.toml
+	@echo '    "messages",' >> ../gen/python/pyproject.toml
 	@echo ']' >> ../gen/python/pyproject.toml
 	@echo '' >> ../gen/python/pyproject.toml
 	@echo '[tool.setuptools.package-data]' >> ../gen/python/pyproject.toml
@@ -362,7 +362,7 @@ generate-pyproject:
 	@echo '"composer" = ["py.typed"]' >> ../gen/python/pyproject.toml
 	@echo '"composer.v1" = ["py.typed"]' >> ../gen/python/pyproject.toml
 	@echo '"common" = ["py.typed"]' >> ../gen/python/pyproject.toml
-	@echo '"models" = ["py.typed"]' >> ../gen/python/pyproject.toml
+	@echo '"messages" = ["py.typed"]' >> ../gen/python/pyproject.toml
 	@echo "pyproject.toml generated"
 
 # =============================================================================

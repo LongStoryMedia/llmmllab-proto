@@ -4,7 +4,7 @@ package runner.v1;
 
 import "common/timestamp.proto";
 import "common/version.proto";
-import "model_profile.proto";
+import "messages/model_profile.proto";
 
 option go_package = "github.com/llmmllab/proto/runner/v1;runnerv1";
 option java_package = "com.llmmllab.runner.v1";

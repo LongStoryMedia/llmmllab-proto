@@ -6,9 +6,9 @@ import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "common/timestamp.proto";
 import "common/version.proto";
-import "message.proto";
-import "user_config.proto";
-import "dynamic_tool.proto";
+import "messages/message.proto";
+import "messages/user_config.proto";
+import "messages/dynamic_tool.proto";
 
 option go_package = "github.com/llmmllab/proto/composer/v1;composerv1";
 option java_package = "com.llmmllab.composer.v1";
