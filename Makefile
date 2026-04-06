@@ -33,14 +33,7 @@ generate-composer:
 		composer/v1/composer.proto \
 		runner/v1/runner.proto \
 		common/timestamp.proto \
-		common/version.proto
-	$(PYTHON_PATH) -m grpc_tools.protoc \
-		-I. \
-		-I../.venv/lib/python3.12/site-packages \
-		-Illmmllab-schemas \
-		--python_out=../gen/python/messages \
-		--grpc_python_out=../gen/python/messages \
-		--pyi_out=../gen/python/messages \
+		common/version.proto \
 		messages/model_profile.proto \
 		messages/model_parameters.proto \
 		messages/model_profile_image_settings.proto \
@@ -187,14 +180,7 @@ generate-runner:
 		runner/v1/runner.proto \
 		composer/v1/composer.proto \
 		common/timestamp.proto \
-		common/version.proto
-	$(PYTHON_PATH) -m grpc_tools.protoc \
-		-I. \
-		-I../.venv/lib/python3.12/site-packages \
-		-Illmmllab-schemas \
-		--python_out=../gen/python/messages \
-		--grpc_python_out=../gen/python/messages \
-		--pyi_out=../gen/python/messages \
+		common/version.proto \
 		messages/model_profile.proto \
 		messages/model_parameters.proto \
 		messages/model_profile_image_settings.proto \
