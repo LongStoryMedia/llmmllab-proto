@@ -5,7 +5,7 @@ syntax = "proto3";
 
 package messages;
 
-option go_package = "github.com/example/messages";
+option go_package = "github.com/LongStoryMedia/llmmllab-proto";
 
 // Parameters for configuring a language model
 message ModelParameters {

@@ -5,7 +5,7 @@ syntax = "proto3";
 
 package messages;
 
-option go_package = "github.com/example/messages";
+option go_package = "github.com/LongStoryMedia/llmmllab-proto";
 
 import "google/protobuf/timestamp.proto";
 import "research_subtask.proto";
