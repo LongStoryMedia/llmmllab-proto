@@ -27,6 +27,7 @@ message WorkflowState {
     map<string, string> variables = 4;
     google.protobuf.Timestamp created_at = 5;
     repeated messages.Message messages = 6;
+    messages.UserConfig user_config = 7;
 }
 
 // ComposeWorkflowRequest requests workflow composition
