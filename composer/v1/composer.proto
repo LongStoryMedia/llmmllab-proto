@@ -13,39 +13,15 @@ import "messages/dynamic_tool.proto";
 option go_package = "github.com/llmmllab/proto/composer/v1;composerv1";
 option java_package = "com.llmmllab.composer.v1";
 
-// WorkflowHandle represents a created workflow
-message WorkflowHandle {
-    string workflow_id = 1;
-    google.protobuf.Timestamp created_at = 2;
-}
-
-// WorkflowState represents the state of a workflow
-message WorkflowState {
-    string user_id = 1;
-    int32 conversation_id = 2;
-    string workflow_type = 3;
-    map<string, string> variables = 4;
-    google.protobuf.Timestamp created_at = 5;
-    repeated messages.Message messages = 6;
-    messages.UserConfig user_config = 7;
-}
-
-// ComposeWorkflowRequest requests workflow composition
-message ComposeWorkflowRequest {
+// ExecuteWorkflowRequest requests workflow execution with streaming
+// This combines workflow composition and execution into a single RPC call
+message ExecuteWorkflowRequest {
     string user_id = 1;
     string workflow_type = 2;
     string model_name = 3;
-    google.protobuf.Timestamp timestamp = 4;
-    messages.UserConfig user_config = 5;
-    messages.DynamicTool tools = 6;
-}
-
-// ExecuteWorkflowRequest requests workflow execution with streaming
-message ExecuteWorkflowRequest {
-    string workflow_id = 1;
-    WorkflowState initial_state = 2;
-    bool stream_events = 3;
-    repeated messages.Message messages = 4;
+    messages.UserConfig user_config = 4;
+    messages.DynamicTool tools = 5;
+    repeated messages.Message messages = 6;
 }
 
 // WorkflowEvent represents a workflow execution event
@@ -143,53 +119,27 @@ message TodoItem {
     int64 created_at = 4;
 }
 
-// CreateInitialStateRequest requests initial workflow state creation
-message CreateInitialStateRequest {
-    string user_id = 1;
-    int32 conversation_id = 2;
-    string workflow_type = 3;
-    repeated messages.Message messages = 4;
-}
-
-// ClearWorkflowCacheRequest requests workflow cache clearing
-message ClearWorkflowCacheRequest {
-    string user_id = 1;
-}
-
-// ClearWorkflowCacheResponse returns cache clear results
-message ClearWorkflowCacheResponse {
-    bool success = 1;
-    string message = 2;
-    int32 cleared_count = 3;
-}
 
 // GetWorkflowStatusRequest gets the status of a workflow
 message GetWorkflowStatusRequest {
-    string workflow_id = 1;
+    string user_id = 1;
+    string workflow_type = 2;
 }
 
 // GetWorkflowStatusResponse returns workflow status
 message GetWorkflowStatusResponse {
-    string workflow_id = 1;
-    string status = 2;
-    WorkflowState state = 3;
+    string user_id = 1;
+    string workflow_type = 2;
+    string status = 3;
     google.protobuf.Timestamp created_at = 4;
     google.protobuf.Timestamp completed_at = 5;
 }
 
 // ComposerService provides workflow composition and execution
 service ComposerService {
-    // ComposeWorkflow creates a new workflow from requirements
-    rpc ComposeWorkflow(ComposeWorkflowRequest) returns (WorkflowHandle);
-
-    // ExecuteWorkflow executes a workflow with streaming responses
+    // ExecuteWorkflow composes and executes a workflow with streaming responses
+    // This RPC combines workflow composition and execution into a single call
     rpc ExecuteWorkflow(ExecuteWorkflowRequest) returns (stream ChatResponse);
-
-    // CreateInitialState creates initial state for a workflow
-    rpc CreateInitialState(CreateInitialStateRequest) returns (WorkflowState);
-
-    // ClearWorkflowCache clears cached workflows for a user
-    rpc ClearWorkflowCache(ClearWorkflowCacheRequest) returns (ClearWorkflowCacheResponse);
 
     // GetWorkflowStatus gets the status of a workflow
     rpc GetWorkflowStatus(GetWorkflowStatusRequest) returns (GetWorkflowStatusResponse);
