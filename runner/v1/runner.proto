@@ -171,7 +171,7 @@ message ListPipelinesResponse {
 // RunnerService provides pipeline management and execution
 service RunnerService {
     // CreatePipeline creates a new pipeline from profile
-    rpc CreatePipeline(CreatePipelineRequest) returns (StatusResponse);
+    rpc CreatePipeline(CreatePipelineRequest) returns (PipelineHandle);
 
     // ExecutePipeline executes a pipeline with streaming output
     rpc ExecutePipeline(ExecutePipelineRequest) returns (stream PipelineEvent);
