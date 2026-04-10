@@ -178,6 +178,7 @@ generate-runner:
 		--grpc_python_out=../gen/python \
 		--pyi_out=../gen/python \
 		runner/v1/runner.proto \
+		messages/model.proto \
 		composer/v1/composer.proto \
 		common/timestamp.proto \
 		common/version.proto \

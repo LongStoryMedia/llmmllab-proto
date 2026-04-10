@@ -5,6 +5,7 @@ package runner.v1;
 import "common/timestamp.proto";
 import "common/version.proto";
 import "messages/model_profile.proto";
+import "messages/model.proto";
 
 option go_package = "github.com/llmmllab/proto/runner/v1;runnerv1";
 option java_package = "com.llmmllab.runner.v1";
@@ -115,6 +116,9 @@ message CreatePipelineRequest {
     string priority = 2;
     string grammar_type = 3;
     map<string, string> metadata = 4;
+    // Model definition passed from Server for local models
+    // For remote providers, this may be empty or contain minimal info
+    messages.Model model = 5;
 }
 
 // ExecutePipelineRequest requests pipeline execution
